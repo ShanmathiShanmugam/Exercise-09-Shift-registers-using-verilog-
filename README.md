@@ -41,23 +41,100 @@ FIGURE-04
 A Parallel in Parallel out (PIPO) shift register is used as a temporary storage device and like SISO Shift register it acts as a delay element.
 
 ### Procedure
-/* write all the steps invloved */
+Step 1:
 
+Create a new file in quartus II.
+
+Step 2:
+
+Module Declaration. Module should have the file name.
+
+Step 3:
+
+Use begin declaration to define the functionality of logic circuits.
+
+Step 4:
+
+Within begin use if statements.
+
+Step 5:
+
+At the end give endmodule.
+
+Step 6:
+
+Run the program and choose RTL viewer to get RTL realization.
 
 
 ### PROGRAM 
-/*
+
 Program for  Implementation-of Shift-registers-using-verilog-
-Developed by: 
-RegisterNumber:  
-*/
+
+
+Developed by: S Shanmathi
+
+RegisterNumber:  212222100040
+
+```
+i) PISO:
+module piso(Clk, Parallel_In,load, Serial_Out);
+input Clk,load;
+input [3:0]Parallel_In;
+output reg Serial_Out;
+reg [3:0]tmp;
+always @(posedge Clk)
+begin
+if(load)
+tmp<=Parallel_In;
+else
+begin
+Serial_Out<=tmp[3];
+tmp<={tmp[2:0],1'b0};
+end
+end
+endmodule
+
+ii) PIPO:
+module pipo(PI,Clk,PO);
+input Clk;
+input [3:0] PI;
+output reg [3:0] PO;
+always @ (posedge Clk)
+begin
+PO=PI;
+end 
+endmodule 
+
+iii) SIPO:
+module sipo(SI,Clk,Po);
+input SI,Clk;
+output [0:7]  Po;
+reg [0:7]temp;
+always @ (posedge Clk)
+begin
+temp={temp[0:6],SI};
+end
+assign Po=temp;
+endmodule 
+
+```
 
 
 
 
 
 
-### RTL LOGIC  REGISTERS   
+
+# RTL LOGIC  REGISTERS   
+### PISO:
+![image](https://github.com/VinithaNaidu/Exercise-09-Shift-registers-using-verilog-/assets/121166004/ede97bc8-589c-4b89-89fc-f3875b969748)
+
+### PIPO:
+![image](https://github.com/VinithaNaidu/Exercise-09-Shift-registers-using-verilog-/assets/121166004/e7f7d43f-d581-44db-b898-f3c0259f113b)
+
+### SIPO:
+
+![image](https://github.com/VinithaNaidu/Exercise-09-Shift-registers-using-verilog-/assets/121166004/8c889538-bfad-400a-a65a-7a0420c08ff9)
 
 
 
@@ -67,8 +144,15 @@ RegisterNumber:
 
 
 
-### TIMING DIGRAMS FOR SHIFT REGISTERS
+# TIMING DIGRAMS FOR SHIFT REGISTERS
+### PISO:
+![image](https://github.com/VinithaNaidu/Exercise-09-Shift-registers-using-verilog-/assets/121166004/7dd5076c-48ac-4c18-b61e-70edb5ce5bbe)
 
+### PIPO:
+![image](https://github.com/VinithaNaidu/Exercise-09-Shift-registers-using-verilog-/assets/121166004/94f1a64a-1dd2-4193-9caa-cb765d26b4d0)
+
+### SIPO:
+![image](https://github.com/VinithaNaidu/Exercise-09-Shift-registers-using-verilog-/assets/121166004/d9fb961e-e752-4089-8f61-020231ff22e5)
 
 
 
@@ -77,3 +161,4 @@ RegisterNumber:
 
 
 ### RESULTS 
+PISO , PIPO,PISO has been implemented using verilog and validated their functionality using their functional tables.
