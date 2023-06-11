@@ -73,7 +73,7 @@ Program for  Implementation-of Shift-registers-using-verilog-
 
 Developed by: S Shanmathi
 
-RegisterNumber:  212222100040
+RegisterNumber:  212222100049
 
 ```
 i) PISO:
